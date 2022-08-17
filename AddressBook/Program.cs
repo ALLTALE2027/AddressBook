@@ -40,6 +40,7 @@
 
             Console.WriteLine("Select what you want to do in Address Book: ");
             Console.WriteLine("1.Update contact details");
+            Console.WriteLine("2.Delete contact from Book");
             int selection = int.Parse(Console.ReadLine());
 
             switch (selection)
@@ -48,6 +49,10 @@
                     Console.WriteLine();
                     person.UpdateContact();
                     Console.WriteLine();
+                    break;
+                case 2:
+                    Console.WriteLine();
+                    person.DeleteContact();
                     break;
                 default:
                     Console.WriteLine("Select the action from given choices only");

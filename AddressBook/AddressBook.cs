@@ -126,6 +126,7 @@ namespace AddressBook
             this.email = null;
 
             Console.WriteLine("Contact deleted in Address Book");
+            Console.WriteLine();
 
         }
     }
