@@ -42,6 +42,7 @@ namespace AddressBook
                 $"Lives in {this.city} city and address is {this.address},pincode-{this.zipCode}");
             Console.WriteLine(
                 $"Contact using mobile no-{this.mobileNumber} and email is {this.email}");
+            Console.WriteLine();
 
         }
 
@@ -107,6 +108,8 @@ namespace AddressBook
             }
 
             Console.WriteLine("Contact updated in address book");
+            Console.WriteLine();
+            GetContact();
         }
 
 

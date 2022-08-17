@@ -36,6 +36,24 @@
 
             Console.WriteLine();
             person.GetContact();
+
+
+            Console.WriteLine("Select what you want to do in Address Book: ");
+            Console.WriteLine("1.Update contact details");
+            int selection = int.Parse(Console.ReadLine());
+
+            switch (selection)
+            {
+                case 1:
+                    Console.WriteLine();
+                    person.UpdateContact();
+                    Console.WriteLine();
+                    break;
+                default:
+                    Console.WriteLine("Select the action from given choices only");
+                    break;
+            }
+
         }
     }
 }
