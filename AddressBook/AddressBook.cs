@@ -111,9 +111,6 @@ namespace AddressBook
             Console.WriteLine();
             GetContact();
         }
-
-
-
         public void DeleteContact()
         {
             this.firstName = null;
