@@ -163,23 +163,38 @@ namespace AddressBook
             string check = Console.ReadLine();
             if (contactsDirectory.Any(x => (x.Value.city == check) || (x.Value.state == check)))
             {
-                foreach (KeyValuePair<string,Contact> Dict in contactsDirectory)
+                foreach (KeyValuePair<string, Contact> Dict in contactsDirectory)
                 {
 
-                    if (Dict.Value.state== check|| Dict.Value.city == check)
+                    if (Dict.Value.state == check || Dict.Value.city == check)
                     {
-                        Console.WriteLine("{0} Leaves in {1}", Dict.Key, check);
+                        Console.WriteLine("{0} Lives in {1}", Dict.Key, check);
                     }
 
                 }
             }
             else
-                Console.WriteLine("No one Leaves in {0}", check);
-            
+                Console.WriteLine("No one Lives in {0}", check);
+        }
+
+        public void DisplayPersonsCountByCityStateName()
+        {
+            Console.WriteLine("Enter City or State Name");
+            string check = Console.ReadLine();
+            int count = 0;
+            if (contactsDirectory.Any(x => (x.Value.city == check) || (x.Value.state == check)))
+            {
+                foreach (KeyValuePair<string, Contact> Dict in contactsDirectory)
+                {
+                    if (Dict.Value.state == check || Dict.Value.city == check)
+                        count++;
+                }
+                Console.WriteLine("{0} person(s) Lives in {1}", count, check);
+            }
+            else Console.WriteLine("No one Lives in {0}", check);
 
         }
     }
-
 }
 
 

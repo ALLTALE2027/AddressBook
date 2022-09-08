@@ -76,8 +76,8 @@
                 Console.WriteLine("5.Display all contacts");
                 Console.WriteLine("6.Check for person by city or state name");
                 Console.WriteLine("7.View person by city or state name");
+                Console.WriteLine("8.View persons count living in same city or state");
                 int selection = int.Parse(Console.ReadLine());
-
 
                 switch (selection)
                 {
@@ -123,6 +123,8 @@
                     case 6:person.CheckPersonByCityOrStateName();
                         break;
                     case 7:person.DisplayByCityOrStateName();
+                        break;
+                    case 8:person.DisplayPersonsCountByCityStateName();
                         break;
                     default:
                         Console.WriteLine("Select the action from given choices only");
