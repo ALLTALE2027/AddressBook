@@ -75,6 +75,7 @@
                 Console.WriteLine("4.Delete contact from Book");
                 Console.WriteLine("5.Display all contacts");
                 Console.WriteLine("6.Check for person by city or state name");
+                Console.WriteLine("7.View person by city or state name");
                 int selection = int.Parse(Console.ReadLine());
 
 
@@ -120,6 +121,8 @@
                     case 5:person.GetContact();
                         break;
                     case 6:person.CheckPersonByCityOrStateName();
+                        break;
+                    case 7:person.DisplayByCityOrStateName();
                         break;
                     default:
                         Console.WriteLine("Select the action from given choices only");

@@ -156,6 +156,28 @@ namespace AddressBook
             else
                 Console.WriteLine("Contact is not present");
         }
+
+        public void DisplayByCityOrStateName()
+        {
+            Console.WriteLine("Enter City or State Name");
+            string check = Console.ReadLine();
+            if (contactsDirectory.Any(x => (x.Value.city == check) || (x.Value.state == check)))
+            {
+                foreach (KeyValuePair<string,Contact> Dict in contactsDirectory)
+                {
+
+                    if (Dict.Value.state== check|| Dict.Value.city == check)
+                    {
+                        Console.WriteLine("{0} Leaves in {1}", Dict.Key, check);
+                    }
+
+                }
+            }
+            else
+                Console.WriteLine("No one Leaves in {0}", check);
+            
+
+        }
     }
 
 }
