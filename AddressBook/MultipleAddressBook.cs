@@ -19,8 +19,13 @@ namespace AddressBook
         public void AddContact(string firstName, string lastName, string address, string city, string state, int zipCode,
             long mobileNumber, string email)
         {
-            if (this.contactsDirectory.ContainsKey(firstName))
-                Console.WriteLine("Contact with this name is already in Address Book");
+            //if (this.contactsDirectory.ContainsKey(firstName))
+            //    Console.WriteLine("Contact with this name is already in Address Book");
+
+            //UC7
+            if (contactsDirectory.Any(x => x.Key == firstName))
+                Console.WriteLine("Contact is already present");
+                
 
             else
             {
