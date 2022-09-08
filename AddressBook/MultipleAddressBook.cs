@@ -16,7 +16,8 @@ namespace AddressBook
 
         }
 
-        public void AddContact(string firstName, string lastName, string address, string city, string state, int zipCode,
+        public void AddContact(string firstName, string lastName, string address, string city, string state,
+            int zipCode,
             long mobileNumber, string email)
         {
             //if (this.contactsDirectory.ContainsKey(firstName))
@@ -25,7 +26,7 @@ namespace AddressBook
             //UC7
             if (contactsDirectory.Any(x => x.Key == firstName))
                 Console.WriteLine("Contact is already present");
-                
+
 
             else
             {
@@ -36,6 +37,7 @@ namespace AddressBook
 
 
         }
+
         public void GetContact(string name)
         {
             if (this.contactsDirectory.ContainsKey(name))
@@ -133,6 +135,7 @@ namespace AddressBook
 
             Console.WriteLine("Contact updated in address book");
         }
+
         public void RemoveContact(string name)
         {
             if (this.contactsDirectory.ContainsKey(name))
@@ -143,5 +146,18 @@ namespace AddressBook
             else
                 Console.WriteLine("Contact is not in address book check the  entered first name again");
         }
+
+        public void CheckPersonByCityOrStateName()
+        {
+            Console.WriteLine("Enter City or State Name");
+            string check = Console.ReadLine();
+            if (contactsDirectory.Any(x => x.Value.city == check || x.Value.state == check))
+                Console.WriteLine("Contact is present");
+            else
+                Console.WriteLine("Contact is not present");
+        }
     }
+
 }
+
+
