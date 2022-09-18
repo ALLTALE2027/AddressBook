@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -192,7 +193,45 @@ namespace AddressBook
                 Console.WriteLine("{0} person(s) Lives in {1}", count, check);
             }
             else Console.WriteLine("No one Lives in {0}", check);
+        }
 
+        public void JSONserialisation()
+        {
+            string path = @"C:\Users\darsh\Desktop\Assignments\AddressBook\AddressBook\ContactBook.json";
+            try
+            {
+                using (FileStream fileStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                {
+                    using(StreamWriter SW = new StreamWriter(fileStream))
+                    {
+                        JsonSerializer serialiser = new JsonSerializer();
+                        serialiser.Serialize(SW, contactsDirectory);      
+                    }
+                }
+                Console.WriteLine("contact created.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        public void JSONDesrialization()
+        {
+            string path = @"C:\Users\darsh\Desktop\Assignments\AddressBook\AddressBook\ContactBook.json";
+            try
+            {
+               
+                using (StreamReader SR = new StreamReader(path))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    JsonReader jsonReader = new JsonTextReader(SR);
+                    contactsDirectory = serializer.Deserialize<Dictionary<string, Contact>>(jsonReader);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

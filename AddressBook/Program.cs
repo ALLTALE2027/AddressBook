@@ -63,6 +63,8 @@
             //UC-5
             bool continue_loop = true;
             MultipleAddressBook person = new MultipleAddressBook();
+            Console.WriteLine("Previous Contact Details: ");
+            person.GetContact();
 
             while (continue_loop)
             {
@@ -70,7 +72,7 @@
                 Console.WriteLine("Welcome to Address Book Program");
                 Console.WriteLine("Select what you want to do with the Address Book: ");
                 Console.WriteLine("1.Add contact");
-                Console.WriteLine("2.Display contact");
+                Console.WriteLine("2.Display contact by name");
                 Console.WriteLine("3.Update contact details");
                 Console.WriteLine("4.Delete contact from Book");
                 Console.WriteLine("5.Display all contacts");
@@ -100,7 +102,7 @@
                         Console.WriteLine("Email address: ");
                         string email = Console.ReadLine();
                         person.AddContact(firstName, lastName, address, city, state, zipcode, mobile_no, email);
-
+                        person.JSONserialisation();
                         break;
 
                     case 2:
@@ -112,11 +114,13 @@
                         Console.WriteLine("Enter the first name of contact to update");
                         firstName = Console.ReadLine();
                         person.UpdateContact(firstName);
+                        person.JSONserialisation();
                         break;
                     case 4:
                         Console.WriteLine("Enter the first name of contact you want to delete");
                         firstName = Console.ReadLine();
                         person.RemoveContact(firstName);
+                        person.JSONserialisation();
                         break;
                     case 5:person.GetContact();
                         break;
