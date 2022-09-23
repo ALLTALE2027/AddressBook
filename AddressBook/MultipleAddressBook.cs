@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using CsvHelper;
+using System.Globalization;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -208,7 +210,7 @@ namespace AddressBook
                         serialiser.Serialize(SW, contactsDirectory);      
                     }
                 }
-                Console.WriteLine("contact created.");
+                Console.WriteLine("contact created,JSON");
             }
             catch (Exception ex)
             {
@@ -233,6 +235,47 @@ namespace AddressBook
                 Console.WriteLine(ex.Message);
             }
         }
+        public void CSVserialisation()
+        {
+            string path = @"C:\Users\darsh\Desktop\Assignments\AddressBook\AddressBook\Contacts.csv";
+            try
+            {
+                String csv = String.Join(Environment.NewLine, contactsDirectory.Select(d => $"{d.Key},{d.Value.firstName}," +
+                $"{d.Value.lastName},{d.Value.address} ,{d.Value.city},{d.Value.state}," +
+                $"{d.Value.zipCode},{d.Value.mobileNumber},{d.Value.email}"));
+                File.WriteAllText(path, csv);
+                Console.WriteLine("contact created,CSV");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public void CSVDeserialisation()
+        {
+            string path = @"C:\Users\darsh\Desktop\Assignments\AddressBook\AddressBook\Contacts.csv";
+            try
+            {
+                using (var reader = new StreamReader(path))
+                {
+                    while (!reader.EndOfStream)
+                    {
+                        var line = reader.ReadLine();
+                        if (line == null) continue;
+                        var values = line.Split(',');
+                        Contact MultipleAddressBook = new Contact(values[1], values[2], values[3], values[4], values[5], int.Parse(values[6]), long.Parse(values[7]), values[8]);
+                        contactsDirectory.Add(values[0], MultipleAddressBook);
+                    }
+               }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
     }
 }
 

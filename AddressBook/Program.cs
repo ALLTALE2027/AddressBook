@@ -103,6 +103,7 @@
                         string email = Console.ReadLine();
                         person.AddContact(firstName, lastName, address, city, state, zipcode, mobile_no, email);
                         person.JSONserialisation();
+                        person.CSVserialisation();
                         break;
 
                     case 2:
@@ -115,12 +116,14 @@
                         firstName = Console.ReadLine();
                         person.UpdateContact(firstName);
                         person.JSONserialisation();
+                        person.CSVserialisation();
                         break;
                     case 4:
                         Console.WriteLine("Enter the first name of contact you want to delete");
                         firstName = Console.ReadLine();
                         person.RemoveContact(firstName);
                         person.JSONserialisation();
+                        person.CSVserialisation();
                         break;
                     case 5:person.GetContact();
                         break;
